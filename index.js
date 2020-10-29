@@ -21,7 +21,7 @@ const categoryRouter = require('./lib/category/category.routes');
 const itemRouter = require('./lib/items/item.routes');
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
