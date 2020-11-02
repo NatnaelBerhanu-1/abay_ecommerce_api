@@ -8,17 +8,24 @@ const Category = require('./lib/category/models/categories.model');
 const Item = require('./lib/items/models/items.model');
 const Image = require('./lib/images/models/images.model.js');
 const Contact = require('./lib/contacts/models/contacts.model.js');
+const City = require('./lib/city/model/city.model.js');
 // create tables if not exist
 Image.sync();
 Category.sync();
 Contact.sync();
 User.sync();
-Item.sync();
+Item.sync(
+  {
+    alter: true
+  }
+);
+City.sync();
 
 // routers
 const userRouter = require('./lib/users/user.routes');
 const categoryRouter = require('./lib/category/category.routes');
 const itemRouter = require('./lib/items/item.routes');
+const cityRouter = require('./lib/city/city.route');
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -34,6 +41,7 @@ app.get('/api/v1/', (req, res) => {
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/categories', categoryRouter);
 app.use('/api/v1/items', itemRouter);
+app.use('/api/v1/cities', cityRouter);
 
 app.listen(port, ()=> {
   console.log(`Server started on 127.0.0.1:${port}`);
