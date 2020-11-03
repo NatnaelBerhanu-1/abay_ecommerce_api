@@ -10,16 +10,12 @@ const Image = require('./lib/images/models/images.model.js');
 const Contact = require('./lib/contacts/models/contacts.model.js');
 const City = require('./lib/city/model/city.model.js');
 // create tables if not exist
-Image.sync();
-Category.sync();
-Contact.sync();
-User.sync();
-Item.sync(
-  {
-    alter: true
-  }
-);
-City.sync();
+// Image.sync();
+// Category.sync();
+// Contact.sync();
+// User.sync();
+// Item.sync();
+// City.sync();
 
 // routers
 const userRouter = require('./lib/users/user.routes');
