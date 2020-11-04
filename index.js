@@ -22,6 +22,7 @@ const userRouter = require('./lib/users/user.routes');
 const categoryRouter = require('./lib/category/category.routes');
 const itemRouter = require('./lib/items/item.routes');
 const cityRouter = require('./lib/city/city.route');
+const imageRouter = require('./lib/images/image.routes');
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -38,6 +39,7 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/categories', categoryRouter);
 app.use('/api/v1/items', itemRouter);
 app.use('/api/v1/cities', cityRouter);
+app.use('/api/v1/images', imageRouter);
 
 app.listen(port, ()=> {
   console.log(`Server started on 127.0.0.1:${port}`);
