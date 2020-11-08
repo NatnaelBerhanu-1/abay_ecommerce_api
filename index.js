@@ -35,6 +35,16 @@ app.get('/api/v1/', (req, res) => {
   res.send("welcome");
 });
 
+app.get('/api/v1/init', (req, res) => {
+  res.status(200);
+  res.send(JSON.stringify(
+    {
+      categories: {},
+      featuredAds: {}
+    }
+  ));
+});
+
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/categories', categoryRouter);
 app.use('/api/v1/items', itemRouter);
