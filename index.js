@@ -21,8 +21,9 @@ const City = require('./lib/city/model/city.model.js');
 const userRouter = require('./lib/users/user.routes');
 const categoryRouter = require('./lib/category/category.routes');
 const itemRouter = require('./lib/items/item.routes');
-const cityRouter = require('./lib/city/city.route');
+const cityRouter = require('./lib/city/city.routes');
 const imageRouter = require('./lib/images/image.routes');
+const initRouter = require('./lib/init.routes');
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -35,21 +36,12 @@ app.get('/api/v1/', (req, res) => {
   res.send("welcome");
 });
 
-app.get('/api/v1/init', (req, res) => {
-  res.status(200);
-  res.send(JSON.stringify(
-    {
-      categories: {},
-      featuredAds: {}
-    }
-  ));
-});
-
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/categories', categoryRouter);
 app.use('/api/v1/items', itemRouter);
 app.use('/api/v1/cities', cityRouter);
 app.use('/api/v1/images', imageRouter);
+app.use('/api/v1/init', initRouter);
 
 app.listen(port, ()=> {
   console.log(`Server started on 127.0.0.1:${port}`);
